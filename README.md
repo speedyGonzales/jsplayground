@@ -1,4 +1,4 @@
-# Resources
+ Resources
 
 --------------------------------------------------------------------------
 01. Telerik Academy Javascript Resources
@@ -21,4 +21,7 @@
 [Курс "End-to-End JavaScript Applications"](https://telerikacademy.com/Courses/Courses/Details/192)
 
 --------------------------------------------------------------------------
+02 Miscelanious
+--------------------------------------------------------------------------
+
 [dickinson](http://users.dickinson.edu/~braught/courses/cs131s99/)

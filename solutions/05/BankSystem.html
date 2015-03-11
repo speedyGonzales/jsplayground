@@ -1,0 +1,140 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <title>JavaScript Patterns</title>
+        <meta charset="utf-8">
+    </head>
+    <body>
+    <p id='acount'> Account information </p><br>
+    <p id='saving'> SavingAccount information </p><br>
+    <p id='checking'> CheckingAccount information </p>
+    <script>
+
+    /*  Title: Bank System
+        authour: speedyGonzales
+    */
+
+    /*=====================
+            Account class
+    =======================*/
+
+    function Account(balance){
+        this.balance=balance;
+    }
+
+    //balance
+    Account.prototype.getBalance = function(){
+        return this.balance;
+    };
+    Account.prototype.setBalance = function(value){
+        if(value<0){
+            value=0.0;
+            alert('Initial value for Accout\'s balance is invalid');
+            throw Error('Initial value for Accout\'s balance is invalid');
+
+        }
+        this.balance=value;
+    };
+
+    //credit
+    Account.prototype.credit = function(amount){
+        //this way it is faster then += way
+        this.balance=this.balance+amount;
+    };
+
+    //debit
+    Account.prototype.debit = function(amount){
+        if(this.balance<amount){
+            alert('Debit amount exceeded account balance');
+             throw Error('Debit amount exceeded account balance');
+        }else{
+            this.balance=this.balance+amount;
+        }
+    };
+
+
+    /*=====================
+            Saving's Account class
+    =======================*/
+    function SavingsAccount(balance,interest){
+        if (!this){
+            return new SavingsAccount(balance,interest);
+        }
+        //calling the parent constructor
+        Account.call(this,balance);
+        this.interest=interest;
+    }
+
+    //declaring the inheritance
+    SavingsAccount.prototype = Object.create(Account.prototype);
+
+    //interest
+    SavingsAccount.prototype.getInterest = function(){
+        return this.interest;
+    };
+    SavingsAccount.prototype.setInterest = function(value){
+        this.interest=value;
+    };
+
+    SavingsAccount.prototype.calculateInterest = function(){
+        this.balance=this.balance*(1+(this.interest/100));
+    };
+
+    /*=====================
+            Checking Account class
+    =======================*/
+
+    function CheckingAccount(balance,fee){
+        if (!this){
+            return new CheckingAccount(balance,fee);
+        }
+        //calling the parent constructor
+        Account.call(this,balance);
+        this.fee=fee;
+    }
+
+    //declaring the inheritance
+    CheckingAccount.prototype = Object.create(Account.prototype);
+
+    //interest
+    CheckingAccount.prototype.getFee = function(){
+        return this.fee;
+    };
+    CheckingAccount.prototype.setFee = function(value){
+        this.fee=value;
+    };
+
+    //credit
+    //storing reference to the credit in account
+    var originalCredit=CheckingAccount.prototype.credit
+
+    CheckingAccount.prototype.credit = function(amount){
+        this.balance=originalCredit.apply(this,amount);
+        this.balance=this.balance-this.fee;
+    };
+
+    //debit
+     //storing reference to the debit in account
+    var originalDebit=CheckingAccount.prototype.debit
+
+    CheckingAccount.prototype.debit = function(amount){
+        this.balance=originalDebit.apply(this,amount);
+        this.balance=this.balance-this.fee;
+    };
+
+    var myAccount=new Account(1000.00);
+    myAccount.credit(100.00);
+
+    var mySaving=new SavingsAccount(1000.00,20);
+    mySaving.calculateInterest();
+
+    var myChecking=new CheckingAccount(1000.00,20);
+    myChecking.debit(Account,300.00);
+
+    document.getElementById('acount').innerHTML=''+myAccount.getBalance();
+    document.getElementById('saving').innerHTML=''+mySaving.getBalance();
+    document.getElementById('checking').innerHTML=''+myChecking.getBalance();
+
+    </script>
+    </body>
+</html>

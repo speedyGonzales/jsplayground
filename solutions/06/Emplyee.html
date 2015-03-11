@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <title>JavaScript Patterns</title>
+        <meta charset="utf-8">
+    </head>
+    <body>
+    <p id='before'> showing information before the rase </p><br>
+    <p id='info1'> showing information </p>
+    <p id='after'> showing information after the rase</p><br>
+    <p id='info2'> showing information </p>
+    <script>
+    /*  Title: Employee class
+        authour: speedyGonzales
+    */
+
+    function Employee(firstName, lastName, monthlySalary ){
+        this.firstName=firstName;
+        this.lastName=lastName;
+        this.monthlySalary=monthlySalary;
+    }
+
+    //firstName
+    Employee.prototype.getFirstName = function(){
+        return this.firstName;
+    };
+    Employee.prototype.setFirstName = function(value){
+        this.firstName=value;
+    };
+
+    //lastName
+    Employee.prototype.getLastName = function(){
+        return this.lastName;
+    };
+    Employee.prototype.setLastName = function(value){
+        this.lastName=value;
+    };
+
+    //monthlySalary
+    Employee.prototype.getMonthlySalary = function(){
+        return this.monthlySalary;
+    };
+    Employee.prototype.setMonthlySalary = function(value){
+        this.monthlySalary=value;
+    };
+
+    Employee.prototype.toString = function(){
+        var buff='Employee information: <br><ul><li>' ;
+        buff+='number: '+this.getFirstName()+'</li><li>';
+        buff+='description: '+this.getLastName()+'</li><li>';
+        buff+='quantity: '+this.getMonthlySalary()+'</li><br>';
+        return buff;
+    };
+
+    Employee.prototype.toRaiseSalary = function(value){
+        this.monthlySalary=this.monthlySalary*(1+(value/100));
+    };
+
+
+
+    var emp1=new Employee('Ivan','Ivanov',1500);
+    var emp2=new Employee('Georgi','Georgiev',1800);
+
+    document.getElementById('info1').innerHTML=''+emp1.toString()+emp2.toString();
+
+    emp1.toRaiseSalary(10);
+    emp2.toRaiseSalary(10);
+
+    document.getElementById('info2').innerHTML=''+emp1.toString()+emp2.toString();
+
+    </script>
+    </body>
+</html>

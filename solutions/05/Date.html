@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <title>JavaScript Patterns</title>
+        <meta charset="utf-8">
+    </head>
+    <body>
+    <p id='description'> showing date information </p><br>
+    <p id='date'> showing date </p>
+    <script>
+    /*  Title: Date class
+        authour: speedyGonzales
+    */
+
+    function Date(month, day, year){
+        this.month=month ;
+        this.day=day ;
+        this.year=year;
+    }
+
+    //month
+    Date.prototype.getMonth = function(){
+        return this.month;
+    };
+    Date.prototype.setMonth = function(value){
+        this.month=value;
+    };
+
+    //day
+    Date.prototype.getDay = function(){
+        return this.day;
+    };
+    Date.prototype.setDay = function(value){
+        this.day=value;
+    };
+
+    //year
+    Date.prototype.getYear = function(){
+        return this.year;
+    };
+    Date.prototype.setYear = function(value){
+        this.year=value;
+    };
+
+    Date.prototype.toString = function(){
+        var buff='' ;
+        buff+=this.getMonth()+'/';
+        buff+=this.getDay()+'/';
+        buff+=this.getYear()+'/';
+        return buff;
+    };
+
+
+    var today=new Date(3,11,2015);
+    document.getElementById('date').innerHTML=today.toString();
+
+    </script>
+    </body>
+</html>

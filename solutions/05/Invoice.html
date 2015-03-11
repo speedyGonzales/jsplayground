@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <title>JavaScript Patterns</title>
+        <meta charset="utf-8">
+    </head>
+    <body>
+    <p id='description'> showing invoice information </p><br>
+    <p id='price'> showing price </p>
+    <script>
+    /*  Title: Invoice class
+        authour: speedyGonzales
+    */
+
+    function Invoice(number, description,quantity,priceItem ){
+        this.number=number || '';
+        this.description=description || '';
+        this.quantity=quantity || 0;
+        this.priceItem=priceItem || 0.0;
+    }
+
+    //number
+    Invoice.prototype.getNumber = function(){
+        return this.number;
+    };
+    Invoice.prototype.setNumber = function(value){
+        this.number=value;
+    };
+
+    //description
+    Invoice.prototype.getDescription = function(){
+        return this.description;
+    };
+    Invoice.prototype.setDescription = function(value){
+        this.description=value;
+    };
+
+    //quantity
+    Invoice.prototype.getQuantity = function(){
+        return this.quantity;
+    };
+    Invoice.prototype.setQuantity = function(value){
+        if(value<0){
+            value=0;
+        }
+        this.quantity=value;
+    };
+
+    //priceItem
+    Invoice.prototype.getPriceItem = function(){
+        return this.priceItem;
+    };
+    Invoice.prototype.setPriceItem = function(value){
+        if(value<0){
+            value=0.0;
+        }
+        this.priceItem=value;
+    };
+
+    Invoice.prototype.toString = function(){
+        var buff='Invoice information: <br><ul><li>' ;
+        buff+='number: '+this.getNumber()+'</li><li>';
+        buff+='description: '+this.getDescription()+'</li><li>';
+        buff+='quantity: '+this.getQuantity()+'</li><li>';
+        buff+='priceItem: '+this.getPriceItem()+'</li>';
+            return buff;
+    };
+
+    //getInvoiceAmount
+    Invoice.prototype.getInvoiceAmount = function(){
+        return this.priceItem* this.quantity;
+    };
+
+    var invoice1=new Invoice('item-01','toster', 10, 9.98 );
+    //console.log(invoice1.toString())
+
+    invoice1.setNumber('item-02');
+    invoice1.setDescription('hladilnik');
+    invoice1.setQuantity(2);
+    invoice1.setPriceItem(348.95);
+
+    document.getElementById('description').innerHTML=invoice1.toString();
+    document.getElementById('price').innerHTML=invoice1.getInvoiceAmount();
+
+    </script>
+    </body>
+</html>

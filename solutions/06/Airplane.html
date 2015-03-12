@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <title>JavaScript Patterns</title>
+        <meta charset="utf-8">
+    </head>
+    <body>
+    <p id='plane1'> showing Plane information </p>
+    <p id='tailwind1'> showing tailwind1 </p>
+    <p id='frontwind1'> showing frontwind1 </p><br>
+
+    <p id='plane2'> showing Plane information </p><br>
+    <p id='tailwind2'> showing tailwind1 </p>
+    <p id='frontwind2'> showing frontwind1 </p>
+
+    <script>
+    /*  Title: Airplane class
+        authour: speedyGonzales
+    */
+
+    function Airplane(produser, model, year, tailWind, frontWhind ){
+        this.produser=produser;
+        this.model=model;
+        this.year=year;
+        this.tailWind=tailWind;
+        this.frontWhind=frontWhind;
+    }
+
+    //produser
+    Airplane.prototype.getProduser = function(){
+        return this.produser;
+    };
+    Airplane.prototype.setProduser = function(value){
+        this.produser=value;
+    };
+
+    //model
+    Airplane.prototype.getModel = function(){
+        return this.model;
+    };
+    Airplane.prototype.setModel = function(value){
+        this.model=value;
+    };
+
+    //year
+    Airplane.prototype.getYear = function(){
+        return this.year;
+    };
+    Airplane.prototype.setYear = function(value){
+        this.year=value;
+    };
+
+    //tailWind
+    Airplane.prototype.getTailWind = function(){
+        return this.tailWind;
+    };
+    Airplane.prototype.setTailWind = function(value){
+        this.tailWind=value;
+    };
+
+    //frontWhind
+    Airplane.prototype.getFrontWhind = function(){
+        return this.frontWhind;
+    };
+    Airplane.prototype.setFrontWhind = function(value){
+        this.frontWhind=value;
+    };
+
+    Airplane.prototype.estimateTailWindGas = function(distance){
+        return this.tailWind*distance;
+    };
+
+    Airplane.prototype.estimateFrontWindGas = function(distance){
+        this.frontWhind*distance;
+    };
+
+    var air1=new Airplane('boing 367', 'boing', 2009, 320, 490);
+    var air2=new Airplane('boing 365','boing', 2011, 380, 510);
+
+    document.getElementById('plane1').innerHTML=air1.getModel();
+    document.getElementById('tailwind1').innerHTML=air1.estimateTailWindGas();
+    document.getElementById('frontwind1').innerHTML=air1.estimateFrontWindGas();
+
+    document.getElementById('plane2').innerHTML=air2.getModel();
+    document.getElementById('tailwind2').innerHTML=air2.estimateTailWindGas();
+    document.getElementById('frontwind2').innerHTML=air2.estimateFrontWindGas();
+
+    </script>
+    </body>
+</html>

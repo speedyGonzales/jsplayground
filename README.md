@@ -25,4 +25,5 @@
 --------------------------------------------------------------------------
 
 [dickinson](http://users.dickinson.edu/~braught/courses/cs131s99/)
+
 [javascript-patterns](http://shichuan.github.io/javascript-patterns/)

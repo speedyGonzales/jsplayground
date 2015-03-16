@@ -27,3 +27,11 @@
 [dickinson](http://users.dickinson.edu/~braught/courses/cs131s99/)
 
 [javascript-patterns](http://shichuan.github.io/javascript-patterns/)
+
+[javascriptissexy](http://javascriptissexy.com/)
+
+#AngularJS
+
+[5 steps](http://blog.revolunet.com/blog/2013/06/01/starting-with-angularjs/)
+
+[better way angularjs](https://thinkster.io/a-better-way-to-learn-angularjs/)

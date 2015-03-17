@@ -48,7 +48,7 @@
             alert('Debit amount exceeded account balance');
              throw Error('Debit amount exceeded account balance');
         }else{
-            this.balance=this.balance+amount;
+            this.balance=this.balance-amount;
         }
     };
 
@@ -95,7 +95,7 @@
 
     //declaring the inheritance
     CheckingAccount.prototype = Object.create(Account.prototype);
-    CheckingAccount.prototype=new Account(this.balance);
+   // CheckingAccount.prototype=new Account(this.balance);
 
     //interest
     CheckingAccount.prototype.getFee = function(){
@@ -107,22 +107,17 @@
 
     console.log(CheckingAccount.prototype);
 
-    // //credit
-    // //storing reference to the credit in account
-    // var originalCredit=CheckingAccount.prototype.credit
+    //credit
+    CheckingAccount.prototype.credit = function(amount){
+        this.balance=this.balance + amount;
+        this.balance=this.balance - this.fee;
+    };
 
-    // CheckingAccount.prototype.credit = function(amount){
-    //     this.balance=        this.balance=Оbject.getPrototypeOf (CheckingAccount.prototype)
-    //     .debit.call(this,amount);
-    //     this.balance=this.balance-this.fee;
-    // };
-
-    // //debit
-    // CheckingAccount.prototype.debit = function(amount){
-    //     this.balance=Оbject.getPrototypeOf (CheckingAccount.prototype)
-    //     .debit.call(this,amount);
-    //     this.balance=this.balance-this.fee;
-    // };
+    //debit
+    CheckingAccount.prototype.debit = function(amount){
+        this.balance=this.balance - amount;
+        this.balance=this.balance - this.fee;
+    };
 
     var myAccount=new Account(1000.00);
     myAccount.credit(100.00);
@@ -131,7 +126,7 @@
     mySaving.calculateInterest();
 
     var myChecking=new CheckingAccount(1000.00,20);
-    //myChecking.debit(Account,300.00);
+    myChecking.debit(300.00);
 
     document.getElementById('acount').innerHTML=''+myAccount.getBalance();
     document.getElementById('saving').innerHTML=''+mySaving.getBalance();

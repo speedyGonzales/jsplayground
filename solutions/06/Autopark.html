@@ -1,0 +1,143 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <title>JavaScript Patterns</title>
+        <meta charset="utf-8">
+    </head>
+    <body>
+    <p id='info'> showing information </p>
+    <script>
+    /*  Title: Car class
+        authour: speedyGonzales
+    */
+
+    function Car(manifacture, model, color, year, rent ){
+        this.manifacture=manifacture;
+        this.model=model;
+        this.color=color;
+        this.year=year;
+        this.rent=rent;
+    }
+
+    //manifacture
+    Car.prototype.getManifacture = function(){
+        return this.manifacture;
+    };
+    Car.prototype.setManifacture = function(value){
+        this.manifacture=value;
+    };
+
+    //model
+    Car.prototype.getModel = function(){
+        return this.model;
+    };
+    Car.prototype.setModel = function(value){
+        this.model=value;
+    };
+
+    //color
+    Car.prototype.getColor = function(){
+        return this.color;
+    };
+    Car.prototype.setColor = function(value){
+        this.color=value;
+    };
+
+        //year
+    Car.prototype.getYear = function(){
+        return this.year;
+    };
+    Car.prototype.setYear = function(value){
+        this.year=value;
+    };
+
+    //rent
+    Car.prototype.getRent = function(){
+        return this.rent;
+    };
+    Car.prototype.setRent = function(value){
+        this.rent=value;
+    };
+
+
+    Car.prototype.toString = function(){
+        manifacture, model, color, year, rent
+        var buff='Car information: <br><ul><li>' ;
+        buff+='manifacture: '+this.getManifacture()+'</li><li>';
+        buff+='model: '+this.getModel()+'</li><li>';
+        buff+='color: '+this.getColor()+'</li><br>';
+        uff+='year: '+this.getYear()+'</li><br>';
+        uff+='rent: '+this.getRent()+'</li><br>';
+        return buff;
+    };
+
+    /*=====================
+         Record class
+    =======================*/
+
+  function Record(names, egn, personalCard, startDate, endDate, period ){
+        this.names=names;
+        this.egn=egn;
+        this.personalCard=personalCard;
+        this.startDate=startDate;
+        this.endDate=endDate;
+        this.period=period;
+    }
+
+    //names
+    Record.prototype.getNames = function(){
+        return this.manifacture;
+    };
+    Record.prototype.setNames = function(value){
+        this.manifacture=value;
+    };
+
+    //egn
+    Record.prototype.getEgn = function(){
+        return this.egn;
+    };
+    Record.prototype.setEgn = function(value){
+        this.egn=value;
+    };
+
+    //personalCard
+    Record.prototype.getPersonalCard = function(){
+        return this.personalCard;
+    };
+    Record.prototype.setPersonalCard = function(value){
+        this.personalCard=value;
+    };
+
+    //startDate
+    Record.prototype.getStartDate = function(){
+        return this.startDate;
+    };
+    Record.prototype.setStartDate = function(value){
+        this.startDate=value;
+    };
+
+    //endDate
+    Record.prototype.getEndDate = function(){
+        return this.endDate;
+    };
+    Record.prototype.setEndDate = function(value){
+        this.endDate=value;
+    };
+
+    //period
+    Record.prototype.getPeriod = function(){
+        return this.period;
+    };
+    Record.prototype.setPeriod = function(value){
+        this.period=value;
+    };
+
+
+
+
+
+    document.getElementById('info').innerHTML='';
+
+    </script>
+    </body>
+</html>

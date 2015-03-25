@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Some test</title>
+</head>
+<body>
+    <script  type="text/javascript" charset="utf-8" >
+
+    var extend= function(child,parent){
+        child.prototype=Object.create(parent.prototype);
+    }
+
+    function ClassA(){
+        this.name='classA';
+    }
+    var a= new ClassA();
+    ClassA.prototype.print = function(){
+        console.log(this.name);
+    };
+    //a.print();
+
+    function ClassB(){
+        this.name='classB';
+        this.surname='I am the child';
+    }
+
+    extend(ClassB,ClassA);
+
+    var b=new ClassB();
+    //b.print();
+
+    ClassB.prototype.print = function() {
+        ClassA.prototype.print.call(this);
+        console.log(this.surname);
+    }
+
+    //b.print();
+
+
+    function ClassC() {
+        this.name = "class C";
+        this.surname = "I'm the grandchild";
+    }
+
+    extend(ClassC, ClassB);
+
+    ClassC.prototype.foo = function() {
+        // Do some funky stuff here...
+    }
+
+    ClassC.prototype.print = function () {
+        ClassB.prototype.print.call(this);
+        console.log("Sounds like this is working!");
+    }
+
+    var c = new ClassC();
+    c.print();
+    </script>
+</body>
+</html>
